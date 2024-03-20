@@ -17,10 +17,19 @@ var longestConsecutive = function(nums) {
   return maxCount;
 };
 
-document.getElementById("submit").addEventListener("click", function() {
+document
+  .getElementById("intervalsInput")
+  .addEventListener("keypress", function(event) {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      handleLongestConsecutive();
+    }
+  });
+
+function handleLongestConsecutive() {
   const input = document.getElementById("intervalsInput").value;
   const nums = JSON.parse(input);
   const longestSequence = longestConsecutive(nums);
   document.getElementById("output").innerText =
     "Length of Longest Consecutive Sequence: " + longestSequence;
-});
+}
